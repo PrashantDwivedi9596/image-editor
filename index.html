@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="upper">
+          <div class="left">
+            <div class="top">
+              <label class="upload btn" for="input-file">
+                Upload
+                <input id="input-file" name="upload-file" type="file" hidden />
+              </label>
+              <div class="reset btn">Reset</div>
+              <div class="download btn">Download</div>
+            </div>
+            <div class="bottom">
+              <div class="placeholder active">
+                <div class="icon"><i class="ri-image-upload-fill"></i></div>
+                <p>No Image Chosen Yet</p>
+              </div>
+              <canvas class="hidden" id="image-canvas"></canvas>
+            </div>
+          </div>
+          <div class="right">
+            <div class="top">
+              <h1>Filters</h1>
+              <div class="filters"></div>
+            </div>
+            <div class="bottom"></div>
+          </div>
+        </div>
+
+        <div class="preview-container">
+          <!-- <div class="preview">
+            <canvas class="preview-canvas"></canvas>
+            <h3>Preview</h3>
+          </div>
+          <div class="preview">
+            <h3>Preview</h3>
+          </div>
+          <div class="preview">
+            <h3>Preview</h3>
+          </div>
+          <div class="preview">
+            <h3>Preview</h3>
+          </div> -->
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
