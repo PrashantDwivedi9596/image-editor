@@ -156,6 +156,12 @@
     margin-top: var(--margin-xxs);
   }
 
+  main section .right .filter .filter-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   main section .right .filter input {
     width: 100%;
     outline: none;
@@ -207,8 +213,8 @@
   }
 
   main section .preview-container .preview {
-    background-color: var(--color-active-secondary);
-    padding: var(--padding-sm);
+    background-color: var(--color-active-tertiary);
+    /* padding: var(--padding-sm); */
     width: 90px;
     height: 120px;
     border-radius: var(--border-radius-xxs);
@@ -224,7 +230,7 @@
   }
 
   main section .preview-container .preview.selected {
-    outline: 2px solid var(--color-active-primary);
+    outline: 2px solid var(--color-active-secondary);
     outline-offset: 2px;
     transform: translateY(-3px);
   }
@@ -251,7 +257,7 @@
     position: absolute;
     bottom: 0;
     font-size: 1rem;
-    color: var(--color-text-active-primary);
+    color: var(--color-text-primary);
     display: none;
     transition: all 0.3s ease-in-out;
   }

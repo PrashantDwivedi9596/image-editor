@@ -1,5 +1,16 @@
 import { filters } from './filters.js'
 const previews = {
+  original: {
+    blur: 0,
+    brightness: 100,
+    contrast: 100,
+    grayscale: 0,
+    'hue-rotate': 0,
+    invert: 0,
+    opacity: 100,
+    sepia: 0,
+    saturate: 100,
+  },
   drama: {
     blur: 0,
     brightness: 110,

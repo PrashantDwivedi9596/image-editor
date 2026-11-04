@@ -10,31 +10,51 @@ const download = document.querySelector('.download')
 
 let count = 0
 let file = null
-export let image = null
 let downloadableImage = null
 
+let images = JSON.parse(localStorage.getItem('imageEditorImages') || '[]')
+
+export let image = images.length > 0 ? images[0] : null
 createFilters(applyFilter)
 createPreviews()
+loadLatestImage()
 inputFile.addEventListener('change', (e) => {
   file = e.target.files[0]
 
-  const img = new Image()
-  img.src = URL.createObjectURL(file)
-  img.onload = () => {
-    image = img
-    canvas.width = image.width
-    canvas.height = image.height
-    canvasCtx.drawImage(image, 0, 0)
+  if (!file) return
 
-    createPreviews(image, applyPreset)
+  const reader = new FileReader()
 
-    canvas.classList.add('active')
-    canvas.classList.remove('hidden')
-    placeholder.classList.remove('active')
-    placeholder.classList.add('hidden')
+  reader.onload = () => {
+    const img = new Image()
+
+    img.onload = () => {
+      displayImage(img)
+      saveLocalStorage(reader.result)
+    }
+
+    img.src = reader.result
   }
+
+  reader.readAsDataURL(file)
 })
 
+function displayImage(img) {
+  image = img
+
+  canvas.width = image.width
+  canvas.height = image.height
+
+  canvasCtx.drawImage(image, 0, 0)
+
+  canvas.classList.add('active')
+  canvas.classList.remove('hidden')
+
+  placeholder.classList.remove('active')
+  placeholder.classList.add('hidden')
+
+  createPreviews(image, applyPreset)
+}
 export function applyFilter() {
   if (!image) return
 
@@ -48,6 +68,28 @@ export function applyFilter() {
   canvasCtx.drawImage(image, 0, 0)
 
   canvasCtx.filter = 'none'
+}
+
+function loadLatestImage() {
+  if (images.length === 0) return
+
+  const img = new Image()
+
+  img.onload = () => {
+    displayImage(img)
+  }
+
+  img.src = images[0]
+}
+
+function saveLocalStorage(imageData) {
+  // Add the newest image at the beginning
+  images.unshift(imageData)
+
+  // Keep only the latest five images
+  images = images.slice(0, 5)
+
+  localStorage.setItem('imageEditorImages', JSON.stringify(images))
 }
 
 function resetDefaultFilters() {

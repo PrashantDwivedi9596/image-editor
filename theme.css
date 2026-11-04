@@ -3,6 +3,7 @@
   /* colors */
   --color-bg-primary: rgb(30, 30, 30);
   --color-bg-secondary: rgb(50, 50, 50);
+  --color-bg-tertiary: rgba(70, 70, 70, 0.5);
   --color-active-primary: rgb(233, 223, 223);
   --color-active-secondary: rgb(200, 200, 200);
 
